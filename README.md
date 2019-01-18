@@ -21,6 +21,7 @@ v.1.0 version only  Implementation，base fuction.
 
 
 
+NEXT VERSION WILL MODIFY THE  api,db,mq etc function.
 
 
 
