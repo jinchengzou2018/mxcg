@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-account" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-account-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-author" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-db" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-db/cloud-db-jpa" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-db/cloud-db-mybatis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-db/cloud-db-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-eureka-center" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-eureka-center/eureka-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-gatewayapi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-id" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-id/cloud-id-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-webui/package.json" charset="GBK" />
+  </component>
+</project>

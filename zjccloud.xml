@@ -1,0 +1,1737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="zjccloud" default="all">
+  
+  
+  <property file="zjccloud.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.cloud-common-1.0-snapshot_(2).classpath"/>
+  
+  <path id="library.cloud-db-redis.classpath">
+    <pathelement location="${basedir}/cloud-db/cloud-db-redis/target/cloud-db-redis.jar"/>
+  </path>
+  
+  <path id="library.maven:_antlr:antlr:2.7.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.alibaba:fastjson:1.2.52.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/alibaba/fastjson/1.2.52/fastjson-1.2.52.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.9.7/jackson-annotations-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/dataformat/jackson-dataformat-xml/2.9.7/jackson-dataformat-xml-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.7/jackson-datatype-jdk8-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.module:jackson-module-afterburner:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-afterburner/2.9.7/jackson-module-afterburner-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-jaxb-annotations/2.9.7/jackson-module-jaxb-annotations-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.7/jackson-module-parameter-names-2.9.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml.woodstox:woodstox-core:5.0.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/woodstox/woodstox-core/5.0.3/woodstox-core-5.0.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.fasterxml:classmate:1.3.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.github.andrewoma.dexx:dexx-collections:0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/github/andrewoma/dexx/dexx-collections/0.2/dexx-collections-0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.github.vlsi.compactmap:compactmap:1.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/github/vlsi/compactmap/compactmap/1.2.1/compactmap-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.findbugs:annotations:3.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/annotations/3.0.1/annotations-3.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.findbugs:jsr305:3.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.gson:gson:2.8.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.guava:guava:16.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/16.0/guava-16.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.guava:guava:21.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/21.0/guava-21.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.inject:guice:4.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/inject/guice/4.1.0/guice-4.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.googlecode.javaewah:javaewah:1.1.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/googlecode/javaewah/JavaEWAH/1.1.6/JavaEWAH-1.1.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.jayway.jsonpath:json-path:2.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.jcraft:jsch:0.1.54.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/jcraft/jsch/0.1.54/jsch-0.1.54.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.jcraft:jzlib:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/jcraft/jzlib/1.1.1/jzlib-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.archaius:archaius-core:0.7.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/archaius/archaius-core/0.7.6/archaius-core-0.7.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.eureka:eureka-client:1.9.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/eureka/eureka-client/1.9.3/eureka-client-1.9.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.eureka:eureka-core:1.9.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/eureka/eureka-core/1.9.3/eureka-core-1.9.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.hystrix:hystrix-core:1.5.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/hystrix/hystrix-core/1.5.12/hystrix-core-1.5.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.hystrix:hystrix-javanica:1.5.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/hystrix/hystrix-javanica/1.5.12/hystrix-javanica-1.5.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.hystrix:hystrix-metrics-event-stream:1.5.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/hystrix/hystrix-metrics-event-stream/1.5.12/hystrix-metrics-event-stream-1.5.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.hystrix:hystrix-serialization:1.5.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/hystrix/hystrix-serialization/1.5.12/hystrix-serialization-1.5.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.netflix-commons:netflix-commons-util:0.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/netflix-commons/netflix-commons-util/0.3.0/netflix-commons-util-0.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.netflix-commons:netflix-eventbus:0.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/netflix-commons/netflix-eventbus/0.3.0/netflix-eventbus-0.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.netflix-commons:netflix-infix:0.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/netflix-commons/netflix-infix/0.3.0/netflix-infix-0.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.netflix-commons:netflix-statistics:0.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/netflix-commons/netflix-statistics/0.1.1/netflix-statistics-0.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.ribbon:ribbon-core:2.2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/ribbon/ribbon-core/2.2.5/ribbon-core-2.2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.ribbon:ribbon-eureka:2.2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/ribbon/ribbon-eureka/2.2.5/ribbon-eureka-2.2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.ribbon:ribbon-httpclient:2.2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/ribbon/ribbon-httpclient/2.2.5/ribbon-httpclient-2.2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.ribbon:ribbon-loadbalancer:2.2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/ribbon/ribbon-loadbalancer/2.2.5/ribbon-loadbalancer-2.2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.ribbon:ribbon-transport:2.2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/ribbon/ribbon-transport/2.2.5/ribbon-transport-2.2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.ribbon:ribbon:2.2.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/ribbon/ribbon/2.2.5/ribbon-2.2.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.servo:servo-core:0.12.21.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/servo/servo-core/0.12.21/servo-core-0.12.21.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.netflix.zuul:zuul-core:1.3.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/netflix/zuul/zuul-core/1.3.1/zuul-core-1.3.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey.contribs:jersey-apache-client4:1.19.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/contribs/jersey-apache-client4/1.19.1/jersey-apache-client4-1.19.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-client:1.19.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-client/1.19.1/jersey-client-1.19.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-core:1.19.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-core/1.19.1/jersey-core-1.19.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-server:1.19.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-server/1.19.1/jersey-server-1.19.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.jersey:jersey-servlet:1.19.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/jersey/jersey-servlet/1.19.1/jersey-servlet-1.19.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.thoughtworks.xstream:xstream:1.4.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/thoughtworks/xstream/xstream/1.4.10/xstream-1.4.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vaadin.external.google:android-json:0.0.20131108.vaadin1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.xiaoleilu:hutool-all:3.3.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/xiaoleilu/hutool-all/3.3.2/hutool-all-3.3.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.zaxxer:hikaricp:2.7.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/zaxxer/HikariCP/2.7.9/HikariCP-2.7.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-codec:commons-codec:1.11.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-collections:commons-collections:3.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-configuration:commons-configuration:1.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-configuration/commons-configuration/1.8/commons-configuration-1.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-fileupload:commons-fileupload:1.3.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-io:commons-io:2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-io/commons-io/2.2/commons-io-2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-io:commons-io:2.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-io/commons-io/2.4/commons-io-2.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-jxpath:commons-jxpath:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-jxpath/commons-jxpath/1.3/commons-jxpath-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-lang:commons-lang:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_dom4j:dom4j:1.6.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign.form:feign-form-spring:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/form/feign-form-spring/3.3.0/feign-form-spring-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign.form:feign-form:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/form/feign-form/3.3.0/feign-form-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign:feign-core:10.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/feign-core/10.1.0/feign-core-10.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign:feign-core:9.7.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/feign-core/9.7.0/feign-core-9.7.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign:feign-hystrix:10.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/feign-hystrix/10.1.0/feign-hystrix-10.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign:feign-hystrix:9.7.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/feign-hystrix/9.7.0/feign-hystrix-9.7.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign:feign-java8:9.7.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/feign-java8/9.7.0/feign-java8-9.7.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.github.openfeign:feign-slf4j:9.7.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/github/openfeign/feign-slf4j/9.7.0/feign-slf4j-9.7.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.jsonwebtoken:jjwt:0.7.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/jsonwebtoken/jjwt/0.7.0/jjwt-0.7.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.micrometer:micrometer-core:1.0.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/micrometer/micrometer-core/1.0.7/micrometer-core-1.0.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.reactivex:rxjava-reactive-streams:1.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/reactivex/rxjava-reactive-streams/1.2.1/rxjava-reactive-streams-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.reactivex:rxjava:1.3.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/reactivex/rxjava/1.3.8/rxjava-1.3.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.reactivex:rxnetty-contexts:0.4.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/reactivex/rxnetty-contexts/0.4.9/rxnetty-contexts-0.4.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.reactivex:rxnetty-servo:0.4.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/reactivex/rxnetty-servo/0.4.9/rxnetty-servo-0.4.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.reactivex:rxnetty:0.4.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/reactivex/rxnetty/0.4.9/rxnetty-0.4.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.activation:javax.activation-api:1.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.inject:javax.inject:1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.transaction:javax.transaction-api:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/transaction/javax.transaction-api/1.2/javax.transaction-api-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.validation:validation-api:2.0.1.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.ws.rs:jsr311-api:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.xml.bind:jaxb-api:2.3.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.xml.stream:stax-api:1.0-2.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/xml/stream/stax-api/1.0-2/stax-api-1.0-2.jar"/>
+  </path>
+  
+  <path id="library.maven:_joda-time:joda-time:2.9.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_mysql:mysql-connector-java:5.1.47.classpath">
+    <pathelement location="${path.variable.maven_repository}/mysql/mysql-connector-java/5.1.47/mysql-connector-java-5.1.47.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.bytebuddy:byte-buddy-agent:1.7.11.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/bytebuddy/byte-buddy-agent/1.7.11/byte-buddy-agent-1.7.11.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.bytebuddy:byte-buddy:1.7.11.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/bytebuddy/byte-buddy/1.7.11/byte-buddy-1.7.11.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.jcip:jcip-annotations:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.minidev:accessors-smart:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.minidev:json-smart:2.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/minidev/json-smart/2.3/json-smart-2.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.antlr:antlr-runtime:3.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/antlr/antlr-runtime/3.4/antlr-runtime-3.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.antlr:stringtemplate:3.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-lang3:3.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-lang3/3.7/commons-lang3-3.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-math:2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-math/2.2/commons-math-2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-pool2:2.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-pool2/2.5.0/commons-pool2-2.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpclient:4.0-alpha4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.0-alpha4/httpclient-4.0-alpha4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpclient:4.5.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpcore:4.4.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.logging.log4j:log4j-api:2.10.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.10.0/log4j-api-2.10.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.10.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-to-slf4j/2.10.0/log4j-to-slf4j-2.10.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:8.5.34.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:8.5.34.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/8.5.34/tomcat-embed-el-8.5.34.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:8.5.34.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.34/tomcat-embed-websocket-8.5.34.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjweaver:1.8.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/aspectj/aspectjweaver/1.8.13/aspectjweaver-1.8.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.assertj:assertj-core:3.9.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/assertj/assertj-core/3.9.1/assertj-core-3.9.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.bouncycastle:bcpkix-jdk15on:1.60.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/bouncycastle/bcpkix-jdk15on/1.60/bcpkix-jdk15on-1.60.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.bouncycastle:bcprov-jdk15on:1.60.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/bouncycastle/bcprov-jdk15on/1.60/bcprov-jdk15on-1.60.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.jettison:jettison:1.3.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/jettison/jettison/1.3.7/jettison-1.3.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.woodstox:stax2-api:3.1.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/woodstox/stax2-api/3.1.4/stax2-api-3.1.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.woodstox:woodstox-core-asl:4.4.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/woodstox/woodstox-core-asl/4.4.1/woodstox-core-asl-4.4.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jgit:org.eclipse.jgit.http.apache:4.11.0.201803080745-r.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jgit/org.eclipse.jgit.http.apache/4.11.0.201803080745-r/org.eclipse.jgit.http.apache-4.11.0.201803080745-r.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jgit:org.eclipse.jgit:4.11.0.201803080745-r.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jgit/org.eclipse.jgit/4.11.0.201803080745-r/org.eclipse.jgit-4.11.0.201803080745-r.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.freemarker:freemarker:2.3.28.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/freemarker/freemarker/2.3.28/freemarker-2.3.28.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hdrhistogram:hdrhistogram:2.1.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hdrhistogram/HdrHistogram/2.1.10/HdrHistogram-2.1.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hdrhistogram:hdrhistogram:2.1.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hdrhistogram/HdrHistogram/2.1.9/HdrHistogram-2.1.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.common:hibernate-commons-annotations:5.0.1.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/5.0.1.Final/hibernate-commons-annotations-5.0.1.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.2.Final/hibernate-jpa-2.1-api-1.0.2.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate.validator:hibernate-validator:6.0.13.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/validator/hibernate-validator/6.0.13.Final/hibernate-validator-6.0.13.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hibernate:hibernate-core:5.2.17.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hibernate/hibernate-core/5.2.17.Final/hibernate-core-5.2.17.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.javassist:javassist:3.22.0-ga.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/javassist/javassist/3.22.0-GA/javassist-3.22.0-GA.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.logging:jboss-logging:3.3.2.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.1.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.1.Final/jboss-transaction-api_1.2_spec-1.0.1.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jboss:jandex:2.0.3.final.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jboss/jandex/2.0.3.Final/jandex-2.0.3.Final.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.latencyutils:latencyutils:2.0.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.mockito:mockito-core:2.15.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/mockito/mockito-core/2.15.0/mockito-core-2.15.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.objenesis:objenesis:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/objenesis/objenesis/2.6/objenesis-2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.ow2.asm:asm:5.0.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.projectlombok:lombok:1.16.22.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/projectlombok/lombok/1.16.22/lombok-1.16.22.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.reactivestreams:reactive-streams:1.0.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.skyscreamer:jsonassert:1.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:jul-to-slf4j:1.7.25.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.25.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-actuator-autoconfigure:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator-autoconfigure/2.0.6.RELEASE/spring-boot-actuator-autoconfigure-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-actuator:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator/2.0.6.RELEASE/spring-boot-actuator-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/2.0.6.RELEASE/spring-boot-autoconfigure-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-actuator:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-actuator/2.0.6.RELEASE/spring-boot-starter-actuator-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-aop:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-aop/2.0.6.RELEASE/spring-boot-starter-aop-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-data-jpa:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-data-jpa/2.0.6.RELEASE/spring-boot-starter-data-jpa-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-freemarker:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-freemarker/2.0.6.RELEASE/spring-boot-starter-freemarker-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-jdbc:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-jdbc/2.0.6.RELEASE/spring-boot-starter-jdbc-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-json:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-json/2.0.6.RELEASE/spring-boot-starter-json-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/2.0.6.RELEASE/spring-boot-starter-logging-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-security:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-security/2.0.6.RELEASE/spring-boot-starter-security-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-test:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-test/2.0.6.RELEASE/spring-boot-starter-test-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/2.0.6.RELEASE/spring-boot-starter-tomcat-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter-web:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/2.0.6.RELEASE/spring-boot-starter-web-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-starter:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/2.0.6.RELEASE/spring-boot-starter-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-test-autoconfigure:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-test-autoconfigure/2.0.6.RELEASE/spring-boot-test-autoconfigure-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot-test:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot-test/2.0.6.RELEASE/spring-boot-test-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.boot:spring-boot:2.0.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/boot/spring-boot/2.0.6.RELEASE/spring-boot-2.0.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-commons:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-commons/2.0.2.RELEASE/spring-cloud-commons-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-config-client:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-config-client/2.0.2.RELEASE/spring-cloud-config-client-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-config-server:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-config-server/2.0.2.RELEASE/spring-cloud-config-server-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-context:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-context/2.0.2.RELEASE/spring-cloud-context-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-netflix-archaius:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-archaius/2.0.2.RELEASE/spring-cloud-netflix-archaius-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-netflix-core:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-core/2.0.2.RELEASE/spring-cloud-netflix-core-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-netflix-eureka-client:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-eureka-client/2.0.2.RELEASE/spring-cloud-netflix-eureka-client-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-netflix-eureka-server:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-eureka-server/2.0.2.RELEASE/spring-cloud-netflix-eureka-server-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-netflix-ribbon:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-ribbon/2.0.2.RELEASE/spring-cloud-netflix-ribbon-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-netflix-zuul:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-zuul/2.0.2.RELEASE/spring-cloud-netflix-zuul-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-openfeign-core:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-openfeign-core/2.0.2.RELEASE/spring-cloud-openfeign-core-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-security:2.0.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-security/2.0.1.RELEASE/spring-cloud-security-2.0.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-config:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-config/2.0.2.RELEASE/spring-cloud-starter-config-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-eureka:1.4.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-eureka/1.4.6.RELEASE/spring-cloud-starter-eureka-1.4.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-feign:1.4.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-feign/1.4.6.RELEASE/spring-cloud-starter-feign-1.4.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-netflix-archaius:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-netflix-archaius/2.0.2.RELEASE/spring-cloud-starter-netflix-archaius-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-netflix-eureka-client/2.0.2.RELEASE/spring-cloud-starter-netflix-eureka-client-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-netflix-eureka-server:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-netflix-eureka-server/2.0.2.RELEASE/spring-cloud-starter-netflix-eureka-server-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-netflix-hystrix:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-netflix-hystrix/2.0.2.RELEASE/spring-cloud-starter-netflix-hystrix-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-netflix-ribbon/2.0.2.RELEASE/spring-cloud-starter-netflix-ribbon-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-netflix-zuul:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-netflix-zuul/2.0.2.RELEASE/spring-cloud-starter-netflix-zuul-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-oauth2:2.0.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-oauth2/2.0.1.RELEASE/spring-cloud-starter-oauth2-2.0.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-openfeign:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-openfeign/2.0.2.RELEASE/spring-cloud-starter-openfeign-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-security:2.0.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-security/2.0.1.RELEASE/spring-cloud-starter-security-2.0.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter-zuul:1.4.6.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter-zuul/1.4.6.RELEASE/spring-cloud-starter-zuul-1.4.6.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.cloud:spring-cloud-starter:2.0.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-starter/2.0.2.RELEASE/spring-cloud-starter-2.0.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-commons:2.0.11.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/2.0.11.RELEASE/spring-data-commons-2.0.11.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-commons:2.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-jpa:2.0.11.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-jpa/2.0.11.RELEASE/spring-data-jpa-2.0.11.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-keyvalue:2.0.11.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-keyvalue/2.0.11.RELEASE/spring-data-keyvalue-2.0.11.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.data:spring-data-redis:2.1.3.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/data/spring-data-redis/2.1.3.RELEASE/spring-data-redis-2.1.3.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.0.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/oauth/boot/spring-security-oauth2-autoconfigure/2.0.1.RELEASE/spring-security-oauth2-autoconfigure-2.0.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security.oauth:spring-security-oauth2:2.2.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/oauth/spring-security-oauth2/2.2.1.RELEASE/spring-security-oauth2-2.2.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security.oauth:spring-security-oauth2:2.3.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/oauth/spring-security-oauth2/2.3.2.RELEASE/spring-security-oauth2-2.3.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security.oauth:spring-security-oauth2:2.3.4.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-config:5.0.9.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-config/5.0.9.RELEASE/spring-security-config-5.0.9.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-core:5.0.9.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-core/5.0.9.RELEASE/spring-security-core-5.0.9.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-crypto:5.0.9.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-crypto/5.0.9.RELEASE/spring-security-crypto-5.0.9.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-data:5.1.1.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-data/5.1.1.RELEASE/spring-security-data-5.1.1.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-jwt:1.0.9.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-jwt/1.0.9.RELEASE/spring-security-jwt-1.0.9.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-rsa:1.0.7.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-rsa/1.0.7.RELEASE/spring-security-rsa-1.0.7.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework.security:spring-security-web:5.0.9.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/security/spring-security-web/5.0.9.RELEASE/spring-security-web-5.0.9.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aop:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/5.0.10.RELEASE/spring-aop-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aspects:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aspects/5.0.10.RELEASE/spring-aspects-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-beans:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/5.0.10.RELEASE/spring-beans-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context-support:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/5.0.10.RELEASE/spring-context-support-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/5.0.10.RELEASE/spring-context-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-core:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/5.0.10.RELEASE/spring-core-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-expression:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/5.0.10.RELEASE/spring-expression-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-jcl:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jcl/5.0.10.RELEASE/spring-jcl-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-jdbc:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jdbc/5.0.10.RELEASE/spring-jdbc-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-orm:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-orm/5.0.10.RELEASE/spring-orm-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-oxm:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-oxm/5.0.10.RELEASE/spring-oxm-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-test:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-test/5.0.10.RELEASE/spring-test-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-tx:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-tx/5.0.10.RELEASE/spring-tx-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-web:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-web/5.0.10.RELEASE/spring-web-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-webmvc:5.0.10.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-webmvc/5.0.10.RELEASE/spring-webmvc-5.0.10.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.xmlunit:xmlunit-core:2.5.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/xmlunit/xmlunit-core/2.5.1/xmlunit-core-2.5.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.yaml:snakeyaml:1.19.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar"/>
+  </path>
+  
+  <path id="library.maven:_redis.clients:jedis:1.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/redis/clients/jedis/1.4.0/jedis-1.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_redis.clients:jedis:2.9.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/redis/clients/jedis/2.9.0/jedis-2.9.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_stax:stax-api:1.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/stax/stax-api/1.0.1/stax-api-1.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_xpp3:xpp3_min:1.1.4c.classpath">
+    <pathelement location="${path.variable.maven_repository}/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar"/>
+  </path>
+  
+  
+  <!-- Global Libraries -->
+  
+  <path id="library.cloud-common_.classpath">
+    <pathelement location="D:/zjccloud/cloud-common/target/cloud-common.jar"/>
+  </path>
+  
+  <path id="library.cloud-core_(2).classpath">
+    <pathelement location="D:/zjccloud/cloud-core/target/cloud-core.jar"/>
+  </path>
+  
+  <path id="library.cloud-db-jpa.classpath">
+    <pathelement location="D:/zjccloud/cloud-db/cloud-db-jpa/target/cloud-db-jpa.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/cloud-account-api/module_cloud-account-api.xml"/>
+  
+  <import file="${basedir}/cloud-config/module_cloud-config.xml"/>
+  
+  <import file="${basedir}/cloud-db/module_cloud-db.xml"/>
+  
+  <import file="${basedir}/cloud-db/cloud-db-jpa/module_cloud-db-jpa.xml"/>
+  
+  <import file="${basedir}/cloud-db/cloud-db-redis/module_cloud-db-redis.xml"/>
+  
+  <import file="${basedir}/cloud-eureka-center/module_cloud-eureka-center.xml"/>
+  
+  <import file="${basedir}/cloud-id/module_cloud-id.xml"/>
+  
+  <import file="${basedir}/cloud-id/cloud-id-api/module_cloud-id-api.xml"/>
+  
+  <import file="${basedir}/cloud-eureka-center/eureka-server/module_eureka-server.xml"/>
+  
+  <import file="${basedir}/module_zjccloud.xml"/>
+  
+  <import file="${basedir}/cloud-common/module_cloud-common.xml"/>
+  
+  <import file="${basedir}/cloud-account/module_cloud-account.xml"/>
+  
+  <import file="${basedir}/cloud-author/module_cloud-author.xml"/>
+  
+  <import file="${basedir}/cloud-core/module_cloud-core.xml"/>
+  
+  <import file="${basedir}/cloud-gatewayapi/module_cloud-gatewayapi.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.cloud-account-api, clean.module.cloud-config, clean.module.cloud-db, clean.module.cloud-db-jpa, clean.module.cloud-db-redis, clean.module.cloud-eureka-center, clean.module.cloud-id, clean.module.cloud-id-api, clean.module.eureka-server, clean.module.zjccloud, clean.module.cloud-common, clean.module.cloud-account, clean.module.cloud-author, clean.module.cloud-core, clean.module.cloud-gatewayapi" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.cloud-account-api, compile.module.cloud-config, compile.module.cloud-db, compile.module.cloud-db-jpa, compile.module.cloud-db-redis, compile.module.cloud-eureka-center, compile.module.cloud-id, compile.module.cloud-id-api, compile.module.eureka-server, compile.module.zjccloud, compile.module.cloud-common, compile.module.cloud-account, compile.module.cloud-author, compile.module.cloud-core, compile.module.cloud-gatewayapi" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.cloud-common:jar" value="${basedir}/cloud-common/target"/>
+    <property name="artifact.output.cloud-core:jar" value="${basedir}/cloud-core/target"/>
+    <property name="artifact.output.cloud-db-jpa:jar" value="${basedir}/cloud-db/cloud-db-jpa/target"/>
+    <property name="artifact.output.cloud-db-redis:jar" value="${basedir}/cloud-db/cloud-db-redis/target"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.cloud-common.jar" value="${artifacts.temp.dir}/cloud-common.jar"/>
+    <property name="temp.jar.path.cloud-core.jar" value="${artifacts.temp.dir}/cloud-core.jar"/>
+    <property name="temp.jar.path.cloud-db-jpa.jar" value="${artifacts.temp.dir}/cloud-db-jpa.jar"/>
+    <property name="temp.jar.path.cloud-db-redis.jar" value="${artifacts.temp.dir}/cloud-db-redis.jar"/>
+  </target>
+  
+  <target name="artifact.cloud-common:jar" depends="init.artifacts, compile.module.cloud-common" description="Build &#39;cloud-common:jar&#39; artifact">
+    <property name="artifact.temp.output.cloud-common:jar" value="${artifacts.temp.dir}/cloud_common_jar"/>
+    <mkdir dir="${artifact.temp.output.cloud-common:jar}"/>
+    <jar destfile="${temp.jar.path.cloud-common.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${cloud-common.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-i18n/1.0-beta-10/plexus-i18n-1.0-beta-10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/jetty-util/6.1.25/jetty-util-6.1.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-taglib/1.3.8/struts-taglib-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-skin-model/1.8.1/doxia-skin-model-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-core/1.3.8/struts-core-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jsoup/jsoup/1.10.2/jsoup-1.10.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tasklist/0.18.4/flexmark-ext-gfm-tasklist-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-archiver/3.4/plexus-archiver-3.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-beans/5.1.2.RELEASE/spring-beans-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-site-renderer/1.8.1/doxia-site-renderer-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-xwiki-macros/0.18.4/flexmark-ext-xwiki-macros-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-jira-converter/0.18.4/flexmark-jira-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-aside/0.18.4/flexmark-ext-aside-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-util/0.18.4/flexmark-util-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/pdfbox/fontbox/2.0.4/fontbox-2.0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-abbreviation/0.18.4/flexmark-ext-abbreviation-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/velocity/velocity/1.7/velocity-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-jcl/5.1.2.RELEASE/spring-jcl-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-io/2.7.1/plexus-io-2.7.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-tiles/1.3.8/struts-tiles-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/2.1.0.RELEASE/spring-boot-starter-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-pdfbox/0.0.1-RC9/openhtmltopdf-pdfbox-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/validator/hibernate-validator/6.0.13.Final/hibernate-validator-6.0.13.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-json/2.1.0.RELEASE/spring-boot-starter-json-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-core/1.8/doxia-core-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/2.1.0.RELEASE/spring-boot-starter-logging-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-rtl-support/0.0.1-RC9/openhtmltopdf-rtl-support-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-tables/0.18.4/flexmark-ext-tables-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-formatter/0.18.4/flexmark-formatter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-core/3.0/maven-core-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/iq80/snappy/snappy/0.4/snappy-0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-profile-pegdown/0.18.4/flexmark-profile-pegdown-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-html-parser/0.18.4/flexmark-html-parser-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-spec-example/0.18.4/flexmark-ext-spec-example-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-footnotes/0.18.4/flexmark-ext-footnotes-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-superscript/0.18.4/flexmark-ext-superscript-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-emoji/0.18.4/flexmark-ext-emoji-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-definition/0.18.4/flexmark-ext-definition-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-youtrack-converter/0.18.4/flexmark-youtrack-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/sslext/sslext/1.2-0/sslext-1.2-0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hdrhistogram/HdrHistogram/2.1.9/HdrHistogram-2.1.9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-context/5.1.2.RELEASE/spring-context-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-decoration-model/1.8.1/doxia-decoration-model-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-validator/commons-validator/1.3.1/commons-validator-1.3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/alibaba/fastjson/1.2.52/fastjson-1.2.52.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/9.0.12/tomcat-embed-core-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-aop/5.1.2.RELEASE/spring-aop-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-core/0.0.1-RC9/openhtmltopdf-core-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/jetty/6.1.25/jetty-6.1.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-front-matter/0.18.4/flexmark-ext-jekyll-front-matter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.11.1/log4j-api-2.11.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-markdown/1.8/doxia-module-markdown-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-velocity/1.2/plexus-velocity-1.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-escaped-character/0.18.4/flexmark-ext-escaped-character-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-xdoc/1.8/doxia-module-xdoc-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-autolink/0.18.4/flexmark-ext-autolink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-exec/1.4/maven-reporting-exec-1.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/9.0.12/tomcat-embed-el-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-typographic/0.18.4/flexmark-ext-typographic-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/plugins/maven-deploy-plugin/2.8.2/maven-deploy-plugin-2.8.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-anchorlink/0.18.4/flexmark-ext-anchorlink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-toc/0.18.4/flexmark-ext-toc-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/projectlombok/lombok/1.18.2/lombok-1.18.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-jsoup-dom-converter/0.0.1-RC9/openhtmltopdf-jsoup-dom-converter-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-fml/1.8/doxia-module-fml-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-provider-api/1.0/wagon-provider-api-1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/ibm/icu/icu4j/58.1/icu4j-58.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.7/jackson-module-parameter-names-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-pdf-converter/0.18.4/flexmark-pdf-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot/2.1.0.RELEASE/spring-boot-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark/0.18.4/flexmark-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator-autoconfigure/2.1.0.RELEASE/spring-boot-actuator-autoconfigure-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-all/0.18.4/flexmark-all-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-yaml-front-matter/0.18.4/flexmark-ext-yaml-front-matter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-compress/1.11/commons-compress-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-strikethrough/0.18.4/flexmark-ext-gfm-strikethrough-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/2.1.0.RELEASE/spring-boot-starter-web-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.12/tomcat-embed-websocket-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/micrometer/micrometer-core/1.1.0/micrometer-core-1.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-tag/0.18.4/flexmark-ext-jekyll-tag-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-wikilink/0.18.4/flexmark-ext-wikilink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.7/jackson-datatype-jdk8-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-expression/5.1.2.RELEASE/spring-expression-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-logging-api/1.8/doxia-logging-api-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-core/5.1.2.RELEASE/spring-core-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-xhtml/1.8/doxia-module-xhtml-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-webmvc/5.1.2.RELEASE/spring-webmvc-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-sink-api/1.8/doxia-sink-api-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/plugins/maven-site-plugin/3.7.1/maven-site-plugin-3.7.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-actuator/2.1.0.RELEASE/spring-boot-starter-actuator-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-ins/0.18.4/flexmark-ext-ins-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/pdfbox/pdfbox/2.0.4/pdfbox-2.0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/velocity/velocity-tools/2.0/velocity-tools-2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-archiver/3.1.1/maven-archiver-3.1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/tukaani/xz/1.5/xz-1.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-test-util/0.18.4/flexmark-test-util-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/2.1.0.RELEASE/spring-boot-starter-tomcat-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tables/0.18.4/flexmark-ext-gfm-tables-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-integration-tools/1.8.1/doxia-integration-tools-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-logging/commons-logging/1.1/commons-logging-1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator/2.1.0.RELEASE/spring-boot-actuator-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-utils/3.0.15/plexus-utils-3.0.15.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-apt/1.8/doxia-module-apt-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-chain/commons-chain/1.1/commons-chain-1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/nibor/autolink/autolink/0.6.0/autolink-0.6.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-to-slf4j/2.11.1/log4j-to-slf4j-2.11.1.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.cloud-common.jar}" tofile="${artifact.temp.output.cloud-common:jar}/cloud-common.jar"/>
+  </target>
+  
+  <target name="artifact.cloud-core:jar" depends="init.artifacts, compile.module.cloud-core" description="Build &#39;cloud-core:jar&#39; artifact">
+    <property name="artifact.temp.output.cloud-core:jar" value="${artifacts.temp.dir}/cloud_core_jar"/>
+    <mkdir dir="${artifact.temp.output.cloud-core:jar}"/>
+    <jar destfile="${temp.jar.path.cloud-core.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${cloud-core.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-i18n/1.0-beta-10/plexus-i18n-1.0-beta-10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/jetty-util/6.1.25/jetty-util-6.1.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-taglib/1.3.8/struts-taglib-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-skin-model/1.8.1/doxia-skin-model-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-util/0.18.4/flexmark-util-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-core/1.3.8/struts-core-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jsoup/jsoup/1.10.2/jsoup-1.10.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tasklist/0.18.4/flexmark-ext-gfm-tasklist-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-archiver/3.4/plexus-archiver-3.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/reactivex/rxjava/1.3.8/rxjava-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/github/openfeign/feign-hystrix/10.1.0/feign-hystrix-10.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/jackson/jackson-core-asl/1.9.13/jackson-core-asl-1.9.13.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-beans/5.1.2.RELEASE/spring-beans-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-front-matter/0.18.4/flexmark-ext-jekyll-front-matter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/code/findbugs/annotations/2.0.0/annotations-2.0.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-xwiki-macros/0.18.4/flexmark-ext-xwiki-macros-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-jira-converter/0.18.4/flexmark-jira-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/github/openfeign/feign-core/10.1.0/feign-core-10.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/pdfbox/fontbox/2.0.4/fontbox-2.0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/2.1.0.RELEASE/spring-boot-starter-web-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-ribbon/2.0.2.RELEASE/spring-cloud-netflix-ribbon-2.0.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-abbreviation/0.18.4/flexmark-ext-abbreviation-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/velocity/velocity/1.7/velocity-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-jcl/5.1.2.RELEASE/spring-jcl-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-io/2.7.1/plexus-io-2.7.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-tiles/1.3.8/struts-tiles-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/2.1.0.RELEASE/spring-boot-starter-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/validator/hibernate-validator/6.0.13.Final/hibernate-validator-6.0.13.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-json/2.1.0.RELEASE/spring-boot-starter-json-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-core/1.8/doxia-core-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/github/openfeign/form/feign-form-spring/3.3.0/feign-form-spring-3.3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/2.1.0.RELEASE/spring-boot-starter-logging-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-rtl-support/0.0.1-RC9/openhtmltopdf-rtl-support-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-tables/0.18.4/flexmark-ext-tables-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-site-renderer/1.8.1/doxia-site-renderer-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-formatter/0.18.4/flexmark-formatter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-core/3.0/maven-core-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-aside/0.18.4/flexmark-ext-aside-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-profile-pegdown/0.18.4/flexmark-profile-pegdown-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-html-parser/0.18.4/flexmark-html-parser-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-spec-example/0.18.4/flexmark-ext-spec-example-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/security/spring-security-web/5.1.1.RELEASE/spring-security-web-5.1.1.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-footnotes/0.18.4/flexmark-ext-footnotes-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-superscript/0.18.4/flexmark-ext-superscript-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-expression/5.1.2.RELEASE/spring-expression-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-pdfbox/0.0.1-RC9/openhtmltopdf-pdfbox-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-definition/0.18.4/flexmark-ext-definition-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.9.7/jackson-annotations-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-youtrack-converter/0.18.4/flexmark-youtrack-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/alibaba/fastjson/1.2.52/fastjson-1.2.52.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/sslext/sslext/1.2-0/sslext-1.2-0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hdrhistogram/HdrHistogram/2.1.9/HdrHistogram-2.1.9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/security/oauth/spring-security-oauth2/2.3.4.RELEASE/spring-security-oauth2-2.3.4.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+      <zipfileset src="${basedir}/cloud-common/target/cloud-common.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-decoration-model/1.8.1/doxia-decoration-model-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/security/spring-security-data/5.1.1.RELEASE/spring-security-data-5.1.1.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-validator/commons-validator/1.3.1/commons-validator-1.3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-apt/1.8/doxia-module-apt-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/9.0.12/tomcat-embed-core-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-aop/5.1.2.RELEASE/spring-aop-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-context/5.1.2.RELEASE/spring-context-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/jetty/6.1.25/jetty-6.1.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/security/spring-security-core/5.1.1.RELEASE/spring-security-core-5.1.1.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.11.1/log4j-api-2.11.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/security/spring-security-config/5.1.1.RELEASE/spring-security-config-5.1.1.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-markdown/1.8/doxia-module-markdown-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-velocity/1.2/plexus-velocity-1.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-escaped-character/0.18.4/flexmark-ext-escaped-character-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-xdoc/1.8/doxia-module-xdoc-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/pdfbox/pdfbox/2.0.4/pdfbox-2.0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-configuration/commons-configuration/1.8/commons-configuration-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-autolink/0.18.4/flexmark-ext-autolink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-exec/1.4/maven-reporting-exec-1.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/9.0.12/tomcat-embed-el-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-typographic/0.18.4/flexmark-ext-typographic-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/plugins/maven-deploy-plugin/2.8.2/maven-deploy-plugin-2.8.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-anchorlink/0.18.4/flexmark-ext-anchorlink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark/0.18.4/flexmark-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-toc/0.18.4/flexmark-ext-toc-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/netflix/hystrix/hystrix-core/1.4.26/hystrix-core-1.4.26.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/projectlombok/lombok/1.18.2/lombok-1.18.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-jsoup-dom-converter/0.0.1-RC9/openhtmltopdf-jsoup-dom-converter-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-fml/1.8/doxia-module-fml-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-test-util/0.18.4/flexmark-test-util-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/guava/guava/11.0.2/guava-11.0.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/ibm/icu/icu4j/58.1/icu4j-58.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-openfeign-core/2.0.2.RELEASE/spring-cloud-openfeign-core-2.0.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.7/jackson-module-parameter-names-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-pdf-converter/0.18.4/flexmark-pdf-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot/2.1.0.RELEASE/spring-boot-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator-autoconfigure/2.1.0.RELEASE/spring-boot-actuator-autoconfigure-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-all/0.18.4/flexmark-all-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/iq80/snappy/snappy/0.4/snappy-0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-yaml-front-matter/0.18.4/flexmark-ext-yaml-front-matter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-compress/1.11/commons-compress-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-strikethrough/0.18.4/flexmark-ext-gfm-strikethrough-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/github/openfeign/form/feign-form/3.3.0/feign-form-3.3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.12/tomcat-embed-websocket-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/micrometer/micrometer-core/1.1.0/micrometer-core-1.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-tag/0.18.4/flexmark-ext-jekyll-tag-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-wikilink/0.18.4/flexmark-ext-wikilink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.7/jackson-datatype-jdk8-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-logging-api/1.8/doxia-logging-api-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-core/5.1.2.RELEASE/spring-core-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-xhtml/1.8/doxia-module-xhtml-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-emoji/0.18.4/flexmark-ext-emoji-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-webmvc/5.1.2.RELEASE/spring-webmvc-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-sink-api/1.8/doxia-sink-api-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/plugins/maven-site-plugin/3.7.1/maven-site-plugin-3.7.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-actuator/2.1.0.RELEASE/spring-boot-starter-actuator-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-ins/0.18.4/flexmark-ext-ins-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/cloud/spring-cloud-netflix-archaius/2.0.2.RELEASE/spring-cloud-netflix-archaius-2.0.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/velocity/velocity-tools/2.0/velocity-tools-2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-archiver/3.1.1/maven-archiver-3.1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/tukaani/xz/1.5/xz-1.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/netflix/archaius/archaius-core/0.6.6/archaius-core-0.6.6.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/nibor/autolink/autolink/0.6.0/autolink-0.6.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/2.1.0.RELEASE/spring-boot-starter-tomcat-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-provider-api/1.0/wagon-provider-api-1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tables/0.18.4/flexmark-ext-gfm-tables-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-integration-tools/1.8.1/doxia-integration-tools-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator/2.1.0.RELEASE/spring-boot-actuator-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-utils/3.0.15/plexus-utils-3.0.15.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-core/0.0.1-RC9/openhtmltopdf-core-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-chain/commons-chain/1.1/commons-chain-1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-to-slf4j/2.11.1/log4j-to-slf4j-2.11.1.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.cloud-core.jar}" tofile="${artifact.temp.output.cloud-core:jar}/cloud-core.jar"/>
+  </target>
+  
+  <target name="artifact.cloud-db-jpa:jar" depends="init.artifacts, compile.module.cloud-db-jpa" description="Build &#39;cloud-db-jpa:jar&#39; artifact">
+    <property name="artifact.temp.output.cloud-db-jpa:jar" value="${artifacts.temp.dir}/cloud_db_jpa_jar"/>
+    <mkdir dir="${artifact.temp.output.cloud-db-jpa:jar}"/>
+    <jar destfile="${temp.jar.path.cloud-db-jpa.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${cloud-db-jpa.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-logging-api/1.8/doxia-logging-api-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/nibor/autolink/autolink/0.6.0/autolink-0.6.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-util/1.7/aether-util-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-core/1.3.8/struts-core-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/2.1.0.RELEASE/spring-boot-starter-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-webmvc/5.1.2.RELEASE/spring-webmvc-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-site-renderer/1.8.1/doxia-site-renderer-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-fml/1.8/doxia-module-fml-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/2.1.0.RELEASE/spring-boot-starter-logging-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-yaml-front-matter/0.18.4/flexmark-ext-yaml-front-matter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/classmate/1.4.0/classmate-1.4.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/net/bytebuddy/byte-buddy/1.9.3/byte-buddy-1.9.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-taglib/1.3.8/struts-taglib-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-utils/3.0.15/plexus-utils-3.0.15.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-exec/1.4/maven-reporting-exec-1.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.7.0/commons-beanutils-1.7.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-tables/0.18.4/flexmark-ext-tables-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-plugin-registry/2.2.1/maven-plugin-registry-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-profile/2.2.1/maven-profile-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-model-builder/3.0/maven-model-builder-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-youtrack-converter/0.18.4/flexmark-youtrack-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/plugins/maven-deploy-plugin/2.8.2/maven-deploy-plugin-2.8.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-xdoc/1.8/doxia-module-xdoc-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-rtl-support/0.0.1-RC9/openhtmltopdf-rtl-support-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/ibm/icu/icu4j/58.1/icu4j-58.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-spec-example/0.18.4/flexmark-ext-spec-example-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/plugins/maven-site-plugin/3.7.1/maven-site-plugin-3.7.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/validator/hibernate-validator/6.0.13.Final/hibernate-validator-6.0.13.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-actuator/2.1.0.RELEASE/spring-boot-starter-actuator-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.7/jackson-datatype-jdk8-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-jpa/2.1.2.RELEASE/spring-data-jpa-2.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-io/2.7.1/plexus-io-2.7.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot/2.1.0.RELEASE/spring-boot-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/javassist/javassist/3.23.1-GA/javassist-3.23.1-GA.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-tx/5.1.2.RELEASE/spring-tx-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-escaped-character/0.18.4/flexmark-ext-escaped-character-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-anchorlink/0.18.4/flexmark-ext-anchorlink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-html-parser/0.18.4/flexmark-html-parser-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/sslext/sslext/1.2-0/sslext-1.2-0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator-autoconfigure/2.1.0.RELEASE/spring-boot-actuator-autoconfigure-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-context/5.1.2.RELEASE/spring-context-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-xwiki-macros/0.18.4/flexmark-ext-xwiki-macros-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/velocity/velocity-tools/2.0/velocity-tools-2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/9.0.12/tomcat-embed-el-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-web/5.1.2.RELEASE/spring-web-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/pdfbox/pdfbox/2.0.4/pdfbox-2.0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-pdf-converter/0.18.4/flexmark-pdf-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator/2.1.0.RELEASE/spring-boot-actuator-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/jetty-util/6.1.25/jetty-util-6.1.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-integration-tools/1.8.1/doxia-integration-tools-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hdrhistogram/HdrHistogram/2.1.9/HdrHistogram-2.1.9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-all/0.18.4/flexmark-all-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-guice/2.1.7/sisu-guice-2.1.7-noaop.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-aether-provider/3.0/maven-aether-provider-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-strikethrough/0.18.4/flexmark-ext-gfm-strikethrough-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/plexus/plexus-sec-dispatcher/1.3/plexus-sec-dispatcher-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jsoup/jsoup/1.10.2/jsoup-1.10.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-archiver/3.1.1/maven-archiver-3.1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-orm/5.1.2.RELEASE/spring-orm-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-pdfbox/0.0.1-RC9/openhtmltopdf-pdfbox-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-velocity/1.2/plexus-velocity-1.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-tag/0.18.4/flexmark-ext-jekyll-tag-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-impl/1.7/aether-impl-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-core/1.8/doxia-core-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-front-matter/0.18.4/flexmark-ext-jekyll-front-matter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/tukaani/xz/1.5/xz-1.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-chain/commons-chain/1.1/commons-chain-1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/wagon/wagon-provider-api/1.0/wagon-provider-api-1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-api/1.7/aether-api-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-jcl/5.1.2.RELEASE/spring-jcl-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.11.1/log4j-api-2.11.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.4.10/httpcore-4.4.10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-formatter/0.18.4/flexmark-formatter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-autolink/0.18.4/flexmark-ext-autolink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-test-util/0.18.4/flexmark-test-util-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/oro/oro/2.0.8/oro-2.0.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/2.1.2.RELEASE/spring-data-commons-2.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/common/hibernate-commons-annotations/5.0.4.Final/hibernate-commons-annotations-5.0.4.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/9.0.12/tomcat-embed-websocket-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-to-slf4j/2.11.1/log4j-to-slf4j-2.11.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-digester/commons-digester/1.8/commons-digester-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/iq80/snappy/snappy/0.4/snappy-0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-typographic/0.18.4/flexmark-ext-typographic-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-xhtml/1.8/doxia-module-xhtml-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/eclipse/aether/aether-util/0.9.0.M2/aether-util-0.9.0.M2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-beans/5.1.2.RELEASE/spring-beans-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-aside/0.18.4/flexmark-ext-aside-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-artifact/2.2.1/maven-artifact-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/2.1.0.RELEASE/spring-boot-starter-web-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-skin-model/1.8.1/doxia-skin-model-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-profile-pegdown/0.18.4/flexmark-profile-pegdown-0.18.4.jar"/>
+      <zipfileset src="${basedir}/cloud-core/target/cloud-core.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-artifact-manager/2.2.1/maven-artifact-manager-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/velocity/velocity/1.7/velocity-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-component-annotations/1.5.5/plexus-component-annotations-1.5.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-core/0.0.1-RC9/openhtmltopdf-core-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tasklist/0.18.4/flexmark-ext-gfm-tasklist-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-io/commons-io/2.5/commons-io-2.5.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-json/2.1.0.RELEASE/spring-boot-starter-json-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark/0.18.4/flexmark-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-markdown/1.8/doxia-module-markdown-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/aether/aether-spi/1.7/aether-spi-1.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/reporting/maven-reporting-api/3.0/maven-reporting-api-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-definition/0.18.4/flexmark-ext-definition-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-repository-metadata/3.0/maven-repository-metadata-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.1.1.Final/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-abbreviation/0.18.4/flexmark-ext-abbreviation-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-module-apt/1.8/doxia-module-apt-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-superscript/0.18.4/flexmark-ext-superscript-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/shared/maven-shared-utils/3.1.0/maven-shared-utils-3.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-validator/commons-validator/1.3.1/commons-validator-1.3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/micrometer/micrometer-core/1.1.0/micrometer-core-1.1.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/hibernate-core/5.3.7.Final/hibernate-core-5.3.7.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/struts/struts-tiles/1.3.8/struts-tiles-1.3.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-sink-api/1.8/doxia-sink-api-1.8.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-jdbc/5.1.2.RELEASE/spring-jdbc-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-jsoup-dom-converter/0.0.1-RC9/openhtmltopdf-jsoup-dom-converter-0.0.1-RC9.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-ins/0.18.4/flexmark-ext-ins-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.5.6/httpclient-4.5.6.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-settings/3.0/maven-settings-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-core/3.0/maven-core-3.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-aop/5.1.2.RELEASE/spring-aop-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-core/5.1.2.RELEASE/spring-core-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-project/2.2.1/maven-project-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-emoji/0.18.4/flexmark-ext-emoji-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/maven-model/2.2.1/maven-model-2.2.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-jira-converter/0.18.4/flexmark-jira-converter-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-i18n/1.0-beta-10/plexus-i18n-1.0-beta-10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/sonatype/sisu/sisu-inject-plexus/1.4.2/sisu-inject-plexus-1.4.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tables/0.18.4/flexmark-ext-gfm-tables-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/2.1.0.RELEASE/spring-boot-starter-tomcat-2.1.0.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-toc/0.18.4/flexmark-ext-toc-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/mortbay/jetty/jetty/6.1.25/jetty-6.1.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-interpolation/1.11/plexus-interpolation-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/maven/doxia/doxia-decoration-model/1.8.1/doxia-decoration-model-1.8.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-archiver/3.4/plexus-archiver-3.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/backport-util-concurrent/backport-util-concurrent/3.1/backport-util-concurrent-3.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-footnotes/0.18.4/flexmark-ext-footnotes-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/pdfbox/fontbox/2.0.4/fontbox-2.0.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-wikilink/0.18.4/flexmark-ext-wikilink-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.7/jackson-module-parameter-names-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/9.0.12/tomcat-embed-core-9.0.12.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/dom4j/dom4j/2.1.1/dom4j-2.1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-util/0.18.4/flexmark-util-0.18.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/commons-logging/commons-logging/1.1/commons-logging-1.1.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-compress/1.11/commons-compress-1.11.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/codehaus/plexus/plexus-classworlds/2.5.2/plexus-classworlds-2.5.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-expression/5.1.2.RELEASE/spring-expression-5.1.2.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/jandex/2.0.5.Final/jandex-2.0.5.Final.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.cloud-db-jpa.jar}" tofile="${artifact.temp.output.cloud-db-jpa:jar}/cloud-db-jpa.jar"/>
+  </target>
+  
+  <target name="artifact.cloud-db-redis:jar" depends="init.artifacts, compile.module.cloud-db-redis" description="Build &#39;cloud-db-redis:jar&#39; artifact">
+    <property name="artifact.temp.output.cloud-db-redis:jar" value="${artifacts.temp.dir}/cloud_db_redis_jar"/>
+    <mkdir dir="${artifact.temp.output.cloud-db-redis:jar}"/>
+    <jar destfile="${temp.jar.path.cloud-db-redis.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${cloud-db-redis.output.dir}"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator/2.0.6.RELEASE/spring-boot-actuator-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-expression/5.0.10.RELEASE/spring-expression-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/redis/clients/jedis/3.0.0/jedis-3.0.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-webmvc/5.0.10.RELEASE/spring-webmvc-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot/2.0.6.RELEASE/spring-boot-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-logging/2.0.6.RELEASE/spring-boot-starter-logging-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-keyvalue/2.0.11.RELEASE/spring-data-keyvalue-2.0.11.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-core/5.0.10.RELEASE/spring-core-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-to-slf4j/2.10.0/log4j-to-slf4j-2.10.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-tx/5.0.10.RELEASE/spring-tx-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.7/jackson-module-parameter-names-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/logging/log4j/log4j-api/2.10.0/log4j-api-2.10.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-actuator-autoconfigure/2.0.6.RELEASE/spring-boot-actuator-autoconfigure-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.34/tomcat-embed-websocket-8.5.34.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/commons/commons-pool2/2.5.0/commons-pool2-2.5.0.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hdrhistogram/HdrHistogram/2.1.10/HdrHistogram-2.1.10.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-tomcat/2.0.6.RELEASE/spring-boot-starter-tomcat-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-oxm/5.0.10.RELEASE/spring-oxm-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-web/2.0.6.RELEASE/spring-boot-starter-web-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-beans/5.0.10.RELEASE/spring-beans-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-autoconfigure/2.0.6.RELEASE/spring-boot-autoconfigure-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-aop/5.0.10.RELEASE/spring-aop-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-jcl/5.0.10.RELEASE/spring-jcl-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-json/2.0.6.RELEASE/spring-boot-starter-json-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-context/5.0.10.RELEASE/spring-context-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-web/5.0.10.RELEASE/spring-web-5.0.10.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.7/jackson-datatype-jdk8-2.9.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-commons/2.0.11.RELEASE/spring-data-commons-2.0.11.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/io/micrometer/micrometer-core/1.0.7/micrometer-core-1.0.7.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/apache/tomcat/embed/tomcat-embed-el/8.5.34/tomcat-embed-el-8.5.34.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter-actuator/2.0.6.RELEASE/spring-boot-starter-actuator-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/data/spring-data-redis/2.1.3.RELEASE/spring-data-redis-2.1.3.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/boot/spring-boot-starter/2.0.6.RELEASE/spring-boot-starter-2.0.6.RELEASE.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/hibernate/validator/hibernate-validator/6.0.13.Final/hibernate-validator-6.0.13.Final.jar"/>
+      <zipfileset src="${path.variable.maven_repository}/org/springframework/spring-context-support/5.0.10.RELEASE/spring-context-support-5.0.10.RELEASE.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.cloud-db-redis.jar}" tofile="${artifact.temp.output.cloud-db-redis:jar}/cloud-db-redis.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.cloud-common:jar, artifact.cloud-core:jar, artifact.cloud-db-jpa:jar, artifact.cloud-db-redis:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.cloud-common:jar}"/>
+    <copy todir="${artifact.output.cloud-common:jar}">
+      <fileset dir="${artifact.temp.output.cloud-common:jar}"/>
+    </copy>
+    <mkdir dir="${artifact.output.cloud-core:jar}"/>
+    <copy todir="${artifact.output.cloud-core:jar}">
+      <fileset dir="${artifact.temp.output.cloud-core:jar}"/>
+    </copy>
+    <mkdir dir="${artifact.output.cloud-db-jpa:jar}"/>
+    <copy todir="${artifact.output.cloud-db-jpa:jar}">
+      <fileset dir="${artifact.temp.output.cloud-db-jpa:jar}"/>
+    </copy>
+    <mkdir dir="${artifact.output.cloud-db-redis:jar}"/>
+    <copy todir="${artifact.output.cloud-db-redis:jar}">
+      <fileset dir="${artifact.temp.output.cloud-db-redis:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

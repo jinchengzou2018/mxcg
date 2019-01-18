@@ -1,0 +1,18 @@
+package ${package.Mapper};
+
+import ${cfg.entityPackage}.${entity};
+import ${superMapperClassPackage};
+import org.springframework.stereotype.Repository;
+
+/**
+ * $!{table.comment} Mapper 接口
+ * @author by ${author} on ${date}.
+ */
+#if(${kotlin})
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
+#else
+@Repository
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+}
+#end

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cloud-db-mybatis (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cloud-db/cloud-db-mybatis/target/cloud-db-mybatis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cloud-db-redis">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/cloud-db/cloud-db-redis/target/cloud-db-redis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

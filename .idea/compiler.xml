@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-account" />
+        <module name="cloud-account-api" />
+        <module name="cloud-author" />
+        <module name="cloud-common" />
+        <module name="cloud-config" />
+        <module name="cloud-core" />
+        <module name="cloud-db-jpa" />
+        <module name="cloud-db-mybatis" />
+        <module name="cloud-db-redis" />
+        <module name="cloud-gatewayapi" />
+        <module name="cloud-id-api" />
+        <module name="eureka-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud-dependencies" target="1.8" />
+      <module name="cloud-eureka-server" target="1.8" />
+      <module name="cloud-gateway" target="1.8" />
+      <module name="cloudeurekacenter" target="1.8" />
+      <module name="eurekaserver" target="1.8" />
+      <module name="zuul-server" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
